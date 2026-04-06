@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User account and progress tracking",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "streak": { "type": "integer" },
+        "totalPoints": { "type": "integer" },
+        "lastActive": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "StudyNote": {
+      "title": "Study Note",
+      "description": "Saved notes and AI summaries",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "summary": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "subject": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "title", "content"]
+    },
+    "QuizResult": {
+      "title": "Quiz Result",
+      "description": "Results from MCQ tests",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "subject": { "type": "string" },
+        "score": { "type": "integer" },
+        "total": { "type": "integer" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "score", "total"]
+    },
+    "StudyTask": {
+      "title": "Study Task",
+      "description": "Planned study tasks",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "time": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "date": { "type": "string" }
+      },
+      "required": ["userId", "title", "date"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "UserProfile", "description": "User profiles" },
+    "/notes/{noteId}": { "schema": "StudyNote", "description": "Study notes" },
+    "/quizResults/{resultId}": { "schema": "QuizResult", "description": "Quiz scores" },
+    "/tasks/{taskId}": { "schema": "StudyTask", "description": "Study planner tasks" }
+  }
+}

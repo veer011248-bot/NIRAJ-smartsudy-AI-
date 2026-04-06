@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    background-color: white;
+    color: #111827;
+  }
+  .dark {
+    color-scheme: dark;
+    background-color: #121212;
+    color: white;
+  }
+  body {
+    @apply bg-white text-gray-900 transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-[#121212] text-white;
+  }
+}
+
+/* Force class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));

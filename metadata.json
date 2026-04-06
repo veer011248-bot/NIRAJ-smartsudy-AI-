@@ -1,0 +1,8 @@
+{
+  "name": "Remix: NIRAJ SmartStudy AI",
+  "description": "Smart study companion with AI OCR, notes summarization, quiz generation, and progress tracking by NIRAJ.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
